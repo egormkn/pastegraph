@@ -1,8 +1,8 @@
 #TODO
 
 #Week 1 (27.06 - 03.08)
--[] Play with html. 3 sketches of it, first in Moqups than in html, css
--[] Recover heroku server
+[] Play with html. 3 sketches of it, first in Moqups than in html, css
+[] Recover heroku server
 
 ##DONE
 
