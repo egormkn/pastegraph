@@ -1,6 +1,6 @@
 #TODO
 
-#Week 1 (27.06 - 03.08)
+#Week 2 (13.07 - 20.07)
 - [ ] Play with html. 3 sketches of it, first in Moqups than in html, css
 - [ ] Recover heroku server
 
