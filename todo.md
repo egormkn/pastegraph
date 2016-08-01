@@ -3,6 +3,9 @@
 #Week 2 (13.07 - 20.07)
 - [ ] Play with html. 3 sketches of it, first in Moqups than in html, css
 - [ ] Recover heroku server
+- [ ] choose web-fonts
+- [ ] choose color scheme
+- [ ] think about zurb foundation
 
 ##DONE
 
