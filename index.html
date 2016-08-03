@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset = "utf-8">
+    <title>Pastegraph is a tool for plotting graphs</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="likely/likely.css">
+    <link rel="stylesheet" href="css/checkbox.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/nice-select.css">
+
+    <script src="likely/likely.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.nice-select.js"></script>
+    <script src="js/springy.js"></script>
+    <script src="js/springyui.js"></script>
+    <style>
+    .tabs {
+    	list-style-type: none;
+    	padding: 0;
+    	margin: 0;
+    	position: relative;
+    }
+    .tabs:after {
+    	content: "";
+    	clear: both;
+    	display: block;
+    	height: 374px;
+    }
+    .tabs li {
+    	float: left;
+    }
+    .tabs li > input {
+    	display: none;
+    }
+    .tabs li > label {
+    	display: inline-block;
+    	border: 1px solid #999;
+      border-bottom: 2px;
+    	border-right-width: 0;
+    	border-bottom-width: 0;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    	height: 30px;
+    	line-height: 26px;
+    	padding: 5px 20px;
+    	cursor: pointer;
+    	-webkit-user-select: none;
+    	-moz-user-select: none;
+    	-ms-user-select: none;
+    	user-select: none;
+    }
+    .tabs li:last-child > label {
+    	border-right-width: 1px;
+    }
+    .tabs .tab-content {
+    	display: none;
+    	position: absolute;
+    	left: 0;
+    	padding: 20px;
+    	border: 1px solid #999;
+    	height: 454px;
+      width: 100%;
+    	overflow-y: auto;
+    }
+
+    /* Функциональность: */
+
+    .tabs li > input:checked + label {
+    	background-color: #fff;
+    }
+    .tabs li > input:checked ~ .tab-content {
+    	display: block;
+    }
+</style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="img/logo.png" alt="Pastegraph" style="float: left;">
+      <h1 style="margin-top: 33px;">is a tool for plotting graphs</h1>
+    </div>
+    <a href="https://github.com/misteraverin/pastegraph"><img style="position: absolute;top: 0;right: 0" src="img/forkme.png" alt="forkme"></a>
+    <div style="height:100px;"></div>
+    <hr>
+  </header>
+  <div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Graph source</h2>
+      <select class="wide">
+        <option value="1">Edge list</option>
+        <option value="2">Adjacency matrice</option>
+        <option value="3">Adjacency list</option>
+      </select>
+      <div class="checkbox" style="margin-left: 0px;margin-top: 80px;margin-bottom: 20px;">
+            <label style="font-size: 1.3em">
+                <input type="checkbox" value="" checked>
+                <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                Directed
+            </label>
+      </div>
+      <textarea>
+0 1 0 1
+1 0 1 1
+0 1 0 0
+1 1 0 0
+      </textarea>
+      <button style="margin-top:10px;" type="button" class="btn btn-success btn-lg btn-block">Draw</button>
+    </div>
+    <div class="col-md-6">
+
+    <ul class="tabs">
+	<li>
+		<input type="radio" name="tabs" id="tab-1" checked>
+		<label for="tab-1">Springy</label>
+		<div class="tab-content" style="margin-top:0px;">
+        <canvas id="springydemo"  height="350" />
+		</div>
+	</li>
+</ul>
+
+
+
+
+</div>
+  </div>
+  </div>
+  <footer>
+    <div class="likely">
+        <div class="twitter">Твитнуть</div>
+        <div class="facebook">Поделиться</div>
+        <div class="gplus">Плюсануть</div>
+        <div class="vkontakte">Поделиться</div>
+    </div>
+    <p style="margin-top:10px;">&copy; 2016 <a href="mailto:amax0703@gmail.com">Averin Maxim</a><p>
+  </footer>
+
+	<script>
+        $(document).ready(function() {
+          $('select').niceSelect();
+        });
+    </script>
+    <script>
+var graph = new Springy.Graph();
+
+
+var node1 = graph.newNode({label: '1'});
+var node2 = graph.newNode({label: '2'});
+var node3 = graph.newNode({label: '3'});
+var node4 = graph.newNode({label: '4'});
+
+graph.newEdge(node1, node2, {color: '#00A0B0'});
+graph.newEdge(node1, node4, {color: '#6A4A3C'});
+graph.newEdge(node2, node1, {color: '#CC333F'});
+graph.newEdge(node2, node3, {color: '#EB6841'});
+graph.newEdge(node2, node4, {color: '#EDC951'});
+graph.newEdge(node3, node2, {color: '#7DBE3C'});
+
+
+jQuery(function(){
+var springy = window.springy = jQuery('#springydemo').springy({
+  graph: graph,
+  nodeSelected: function(node){
+    console.log('Node selected: ' + JSON.stringify(node.data));
+  }
+});
+});
+</script>
+</body>
+</html>
