@@ -1,44 +1,72 @@
-body{
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  margin-bottom: 80px;
+/*TODO    background-color */
+
+* {
+    margin: 0;
+    padding: 0;
 }
 
-p {
-  font-size: 16px;
+html,
+body {
+    height: 100%;
+
 }
 
-hr {
-  color: black;
-  margin: 0;
-  padding: 0;
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    /*background: #F5F7FA;*/
+    font: 14px/20px Arial, sans-serif;
 }
 
-footer{
-   position: absolute;
-   bottom: 0;
-   text-align:center;
-   width: 100%;
-   /* Set the fixed height of the footer here */
-   height: 80px;
+
+
+.content {
+    flex: 1 0 auto;
 }
 
-.logo{
-  width: 90%;
-  float: left;
+footer {
+    flex: 0 0 auto;
+    height: 90px;
 }
 
-.col-md-6{
-  margin-top: 70px;
+footer p {
+    padding: 10px 10px 10px 0px;
 }
 
-.directed{
-  font-size: 24px;
-  margin-top: 20px;
+
+
+img {
+    clear: both;
+}
+
+
+
+.cube {
+    height: 400px;
+    background: #00b7ec;
+}
+
+img.fork{
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 textarea{
-   resize: none;
-   height: 250px;
-   width: 100%;
-   border-radius: 5px;
+    resize: none;
+    height: 250px;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.examples {
+    padding: 10px 0px;
+}
+
+canvas {
+
+    /TODO border: 1px solid black;/
 }
