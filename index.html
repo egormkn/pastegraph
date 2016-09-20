@@ -5,11 +5,14 @@
     <meta charset="utf-8" />
     <title>Pastegraph - tool for plotting graph</title>
 
+    <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="likely/likely.js"></script>
-    <script src="js/jquery.js"></script>
     <script src="js/springy.js"></script>
     <script src="js/springyui.js"></script>
+
+    <script src="js/graphlogic.js"></script>
+    <script src="js/ui.js"></script>
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
@@ -36,6 +39,7 @@
         <div  class="row-fluid">
             <div class="col-md-4">
 
+
                     <h2>Graph source</h2>
                     <label class="radio-inline"><input type="radio" name="optradio">Edge list</label>
                     <label class="radio-inline"><input type="radio" name="optradio">Adjacency matrix</label>
@@ -47,7 +51,7 @@
                         Directed
                     </label>
                 </div>
-                    <textarea>
+                    <textarea class="graph-source">
 0 1 0 1
 1 0 1 1
 0 1 0 0
