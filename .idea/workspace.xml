@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="67309581-fbf7-42f0-b312-80edd819279e" name="Default" comment="Build graph by quick. Didn't work&#10;">
+    <list default="true" id="67309581-fbf7-42f0-b312-80edd819279e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/example.js" afterPath="$PROJECT_DIR$/js/example.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/graphlogic.js" afterPath="$PROJECT_DIR$/js/graphlogic.js" />
     </list>
     <ignored path="pastegraph.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -224,7 +221,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
@@ -327,7 +324,7 @@
       <workItem from="1474349118707" duration="14137000" />
       <workItem from="1474365497472" duration="722000" />
       <workItem from="1474528032388" duration="5986000" />
-      <workItem from="1474536386631" duration="1429000" />
+      <workItem from="1474536386631" duration="1480000" />
     </task>
     <task id="LOCAL-00001" summary="small design fixes">
       <created>1474108404992</created>
@@ -343,11 +340,18 @@
       <option name="project" value="LOCAL" />
       <updated>1474360476881</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Build graph by quick. Didn't work&#10;">
+      <created>1474537845403</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1474537845403</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40166000" />
+    <option name="totallyTimeSpent" value="40217000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
