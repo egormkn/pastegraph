@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Passtegraph is a tool for plotting graph</title>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>Pastegraph - tool for plotting graph</title>
 
     <script src="js/jquery.js"></script>
@@ -36,28 +36,31 @@
         </header>
 
 
-        <div  class="row-fluid">
+        <div class="row-fluid">
             <div class="col-md-4">
 
-
-                    <h2>Graph source</h2>
-                    <label class="radio-inline"><input type="radio" name="optradio">Edge list</label>
-                    <label class="radio-inline"><input type="radio" name="optradio">Adjacency matrix</label>
-                    <label class="radio-inline"><input type="radio" name="optradio">Adjacency list</label>
-                <div class="checkbox" style="margin-left: 0px;margin-top: 10px; margin-bottom: 10px;">
-                    <label style="font-size: 1.3em">
-                        <input type="checkbox" value="" checked>
-                        <span class="cr"><i class="cr-icon fa fa-check"></i></span>
-                        Directed
-                    </label>
-                </div>
+                <form>
+                    <legend>Graph source</legend>
+                    <fieldset>
+                        <label class="radio-inline"><input type="radio" name="optradio">Edge list</label>
+                        <label class="radio-inline"><input type="radio" name="optradio">Adjacency matrix</label>
+                        <label class="radio-inline"><input type="radio" name="optradio">Adjacency list</label>
+                        <div class="checkbox" style="margin-left: 0px;margin-top: 10px; margin-bottom: 10px;">
+                            <label style="font-size: 1.3em">
+                                <input type="checkbox" value="" checked>
+                                <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                                Directed
+                            </label>
+                        </div>
+                    </fieldset>
                     <textarea class="graph-source">
 0 1 0 1
 1 0 1 1
 0 1 0 0
 1 1 0 0
                     </textarea>
-                    <button style="margin-top:5%;" type="button" class="btn btn-success btn-lg btn-block">Draw</button>
+                </form>
+                <button style="margin-top:5%;" type="button" class="btn btn-success btn-lg btn-block">Draw</button>
                 <div class="examples">
                     <h3>
                         Examples:
@@ -72,9 +75,8 @@
             </div>
 
 
-
             <div class="col-md-8">
-                <canvas id="springydemo"  height="350" width="600px;" />
+                <canvas id="springydemo" height="350" width="600px;"/>
             </div>
         </div>
 
@@ -90,7 +92,7 @@
             </div>
             <p>&copy; 2016 <a href="mailto:amax0703@gmail.com">Averin Maxim</a></p>
         </div>
-        <div class="col-md-8"> </div>
+        <div class="col-md-8"></div>
     </footer>
 </div>
 
