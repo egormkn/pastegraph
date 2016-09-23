@@ -23,44 +23,37 @@ $(document).ready(function () {
         return (foundItem);
     }
 
-    var textBlock = $("#examples");
-    var matrix = textTo2DArray();
-    var drawingGraph = window.spingy;
+    var drawingGraph;
 
     var buildGraph = function () {
         var graph = new Springy.Graph();
+        var isDirectional = $('#directional').is(':checked');
+        var matrix = textTo2DArray();
 
-        var node1 = graph.newNode({label: '1'});
-        var node2 = graph.newNode({label: '2'});
-        var node3 = graph.newNode({label: '3'});
-        var node4 = graph.newNode({label: '4'});
+        var vertices = matrix.length;
+        var numeration = 1;
+        //TODO rewrite in js way
+        for (var i = numeration; i <= vertices; i++)
+            graph.addNodes(i);
+        // console.log(graph.nodes[0]);
+        for (var i = 0; i < matrix.length; i++)
+            for (var j = 0; j < matrix[i].length; j++) {
+                if (matrix[i][j] == 1) {
+                    graph.addEdges([i + 1, j + 1]);
+                    if (isDirectional) graph.addEdges([i + 1, j + 1]);
+                }
+            }
 
-        graph.newEdge(node1, node2, {label: "GGGG"});
-        graph.newEdge(node1, node4, {label: "GGGG"});
-        graph.newEdge(node2, node1, {color: '#CC333F'});
-        graph.newEdge(node2, node3, {color: '#EB6841'});
-        graph.newEdge(node2, node4, {color: '#EDC951'});
-        graph.newEdge(node3, node2, {color: '#7DBE3C'});
         return graph;
-    }
+    };
 
 
     $("#refresh").click(function () {
         var buildedGraph = buildGraph();
-        if(buildedGraph !== undefined){
+        if (buildedGraph !== undefined) {
             drawingGraph = $("#springydemo").springy({graph: buildedGraph});
         }
     });
 
 
-    /* print_matrix
-     for (var i = 0; i < matrix.length; i++) {
-     var line = "<p>";
-     for (var j = 0; j < matrix[i].length; j++) {
-     line += matrix[i][j] + " ";
-     }
-     line += "</p>";
-     textBlock.append(line);
-     }
-     */
-})
+});

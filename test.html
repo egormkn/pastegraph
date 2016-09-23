@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Passtegraph is a tool for plotting graph</title>
+    <meta charset="utf-8"/>
+    <title>Pastegraph - tool for plotting graph</title>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="likely/likely.js"></script>
+    <script src="js/springy.js"></script>
+    <script src="js/springyui.js"></script>
+
+    <script src="js/graphlogic.js"></script>
+    <script src="js/ui.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="likely/likely.css">
+
+</head>
+
+<body>
+
+
+<div class="content row-fluid">
+
+
+
+        <div class="col-md-4">
+            <label style="font-size: 1.3em">
+                <input id="directional" type="checkbox" value="" >
+                Directed
+            </label>
+
+
+                <textarea id="graph-source" class="graph-source">
+0 1 0 1
+1 0 1 1
+0 1 0 0
+1 1 0 0
+                </textarea>
+
+                <button id="refresh" type="button">Refresh</button>
+                <div class="errors" style="color: red">
+
+                </div>
+        </div>
+
+
+        <div class="col-md-8">
+            <canvas id="springydemo" height="350" width="600px;"/>
+        </div>
+
+
+</div>
+
+
+</body>
+</html>
