@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="67309581-fbf7-42f0-b312-80edd819279e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/main.css" afterPath="$PROJECT_DIR$/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/graphlogic.js" afterPath="$PROJECT_DIR$/js/graphlogic.js" />
     </list>
     <ignored path="pastegraph.iws" />
@@ -44,7 +42,7 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="594">
+            <state relative-caret-position="1716">
               <caret line="78" column="68" selection-start-line="78" selection-start-column="68" selection-end-line="78" selection-end-column="68" />
               <folding />
             </state>
@@ -54,8 +52,8 @@
       <file leaf-file-name="graphlogic.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/graphlogic.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="638">
-              <caret line="59" column="31" selection-start-line="59" selection-start-column="31" selection-end-line="59" selection-end-column="31" />
+            <state relative-caret-position="-264">
+              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -66,7 +64,7 @@
       <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="655">
+            <state relative-caret-position="1210">
               <caret line="55" column="10" selection-start-line="55" selection-start-column="10" selection-end-line="55" selection-end-column="10" />
               <folding />
             </state>
@@ -300,7 +298,8 @@
       <workItem from="1474728973941" duration="2400000" />
       <workItem from="1475398097429" duration="1869000" />
       <workItem from="1476037386960" duration="594000" />
-      <workItem from="1476040382385" duration="2376000" />
+      <workItem from="1476040382385" duration="2787000" />
+      <workItem from="1476200243157" duration="5946000" />
     </task>
     <task id="LOCAL-00001" summary="small design fixes">
       <created>1474108404992</created>
@@ -316,11 +315,18 @@
       <option name="project" value="LOCAL" />
       <updated>1474605870148</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Stack on bugs">
+      <created>1476043051898</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1476043051898</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49219000" />
+    <option name="totallyTimeSpent" value="55576000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -406,7 +412,8 @@
     <MESSAGE value="small design fixes" />
     <MESSAGE value="convert textarea into 2DArray" />
     <MESSAGE value="First small work version&#10;1. made directional check&#10;2. made textareaParser" />
-    <option name="LAST_COMMIT_MESSAGE" value="First small work version&#10;1. made directional check&#10;2. made textareaParser" />
+    <MESSAGE value="Stack on bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Stack on bugs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -820,7 +827,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
+        <state relative-caret-position="1716">
           <caret line="78" column="68" selection-start-line="78" selection-start-column="68" selection-end-line="78" selection-end-column="68" />
           <folding />
         </state>
@@ -828,7 +835,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="655">
+        <state relative-caret-position="1210">
           <caret line="55" column="10" selection-start-line="55" selection-start-column="10" selection-end-line="55" selection-end-column="10" />
           <folding />
         </state>
@@ -836,8 +843,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/graphlogic.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
-          <caret line="59" column="31" selection-start-line="59" selection-start-column="31" selection-end-line="59" selection-end-column="31" />
+        <state relative-caret-position="-264">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>

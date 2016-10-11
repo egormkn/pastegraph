@@ -7,18 +7,20 @@
  2.  [DONE]  build springy graph
  2.1 [DONE] build directional or inderectional graph
  3. make cool form with checked properties and so on
- 3.1 bug!!!! the edges are doubled
+ 3.1 [fixed] bug!!!! the edges are doubled
  3.1 three ways of graph
  4. localstorage
  5. make good form with submit
  5. make convert versions
  6. make issues form pavlenko
-    1. detach Node in good manner(when no edges connect with it)
+ 1. detach Node in good manner(when no edges connect with it)
  7. how to store information and variables
 
  Final verison on the end of the week: nice design, fix any bugs, 3 ways, localstorqage
  mocha tests
  */
+
+// console.log(currentElement.source.id, currentElement.target.id);
 
 $(document).ready(function () {
     function textTo2DArray() {
@@ -28,6 +30,18 @@ $(document).ready(function () {
             foundItem[i] = foundItem[i].split(" ");
         }
         return (foundItem);
+    }
+
+    function findEdge(edges, from, to) {
+        var foundEdge = false;
+        for (let i = 0; i < edges.length; i++) {
+            var currentElement = edges[i];
+            if (currentElement.source.id == from && currentElement.target.id == to) {
+                foundEdge = true;
+                break;
+            }
+        }
+        return foundEdge;
     }
 
 
@@ -47,18 +61,23 @@ $(document).ready(function () {
             graph.addNodes(i);
 
         for (var i = 0; i < matrix.length; i++) {
-            var cnt = 0;
             for (var j = 0; j < matrix[i].length; j++) {
                 if (matrix[i][j] == 1) {
+                    var array = graph.edges;
 
-                    graph.addEdges([i + 1, j + 1]);
-                    if (isDirectional) graph.addEdges([i + 1, j + 1]);
+                     if (!findEdge(array, i + 1, j + 1)) graph.addEdges([i + 1, j + 1]);
+
+
+                    if (isDirectional) {
+
+                        if (!findEdge(array, j + 1, i + 1)) graph.addEdges([j + 1, i + 1]);
+
+                    }
                 }
             }
 
         }
-        var array = graph.edges;
-        console.log(array);
+
         return graph;
     };
 
