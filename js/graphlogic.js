@@ -9,9 +9,12 @@
  3.  make cool form with checked properties and so on
  3.1 [DONE] bug!!!! the edges are doubled
  3.2 [DONE] detach Node in good manner (when no edges connect with it)
+ 4.2 [DONE] undirected, make no arrows and add mark at matrix of adjancey!
+ directed, make arrows and add no edges
  4. three ways of graph
  4.1 redraw graph
 
+think about scope in js code!
 
  5. localstorage
  5. make good form with submit
@@ -52,14 +55,13 @@ $(document).ready(function () {
 
     var buildGraph = function () {
         var graph = new Springy.Graph();
-        //Springy.Renderer.drawEdge.arrowWidth  = 0;
-       // Springy.Renderer.drawEdge.arrowHeight = 0;
-        if($("input[type='radio'][name='edgeList']").is(":checked"))
-            drawEdgeList()
-        if($("input[type='radio'][name='edgeList']").is(":checked"))
-            drawEdgeList()
-        if($("input[type='radio'][name='edgeList']").is(":checked"))
-            drawEdgeList()
+        /*
+         if($("input[type='radio'][value='matrix']").is(":checked"))
+         drawMatrix();
+         if($("input[type='radio'][value='edgeList']").is(":checked"))
+         drawEdgeList();
+         if($("input[type='radio'][value='AdjacencyList']").is(":checked"))
+         drawAdjacencyList();*/
 
         var isDirectional = $('#directional').is(':checked');
         var matrix = textTo2DArray();
@@ -77,16 +79,15 @@ $(document).ready(function () {
                 if (matrix[i][j] == 1) {
                     var array = graph.edges;
 
-                    if (!findEdge(array, i + 1, j + 1)) {
-                        graph.addEdges([i + 1, j + 1]);
+                    if (!isDirectional && !findEdge(array, i + 1, j + 1)) {
+                        graph.addEdges([i + 1, j + 1, {directional: false}]);
+                        matrix[j][i] = 1;
                     }
 
                     if (isDirectional) {
-
                         if (!findEdge(array, j + 1, i + 1)) {
-                            graph.addEdges([j + 1, i + 1]);
+                            graph.addEdges([i + 1, j + 1, {directional: true}]);
                         }
-
                     }
                 }
             }
@@ -99,12 +100,12 @@ $(document).ready(function () {
                     used[i] = 1;
                     used[j] = 1;
                 }
-        for(var i = 0; i < used.length; i++)
-            if(used[i] == 0) graph.removeNode(graph.nodes[i]);
+        for (var i = 0; i < used.length; i++)
+            if (used[i] == 0) graph.removeNode(graph.nodes[i]);
         return graph;
     };
 
-    function graph_to_edge_list(graph){
+    function graph_to_edge_list(graph) {
 
     };
 
