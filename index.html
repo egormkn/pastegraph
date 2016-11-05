@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Passtegraph is a tool for plotting graph</title>
+    <title>Pastegraph is a tool for plotting graph</title>
     <meta charset="utf-8"/>
     <title>Pastegraph - tool for plotting graph</title>
 
@@ -42,9 +42,12 @@
                 <form>
                     <legend>Graph source</legend>
                     <fieldset>
-                        <label class="radio-inline"><input type="radio" name="draw-method" value="matrix" checked>Adjacency matrix</label>
-                        <label class="radio-inline"><input type="radio" name="draw-method" value="edgeList">Edge list</label>
-                        <label class="radio-inline"><input type="radio" name="draw-method" value="adjacencyList" >Adjacency list</label>
+                        <label class="radio-inline"><input type="radio" name="draw-method" value="matrix" checked>Adjacency
+                            matrix</label>
+                        <label class="radio-inline"><input type="radio" name="draw-method" value="edgeList">Edge
+                            list</label>
+                        <label class="radio-inline"><input type="radio" name="draw-method" value="adjacencyList">Adjacency
+                            list</label>
                         <div class="checkbox" style="margin-left: 0px;margin-top: 10px; margin-bottom: 10px;">
                             <label style="font-size: 1.3em">
                                 <input id="directional" type="checkbox" value="">
@@ -55,11 +58,13 @@
                     </fieldset>
                     <textarea id="graph-source" class="graph-source">
 0 0 0
-1 0 0
-1 0 0
+1 0 1
+1 0 1
                     </textarea>
                 </form>
-                <button style="margin-top:5%;" id="refresh" type="button" class="btn btn-success btn-lg btn-block">Draw</button>
+                <button style="margin-top:5%;" id="refresh" type="button" class="btn btn-success btn-lg btn-block">
+                    Draw
+                </button>
                 <div class="examples">
                     <h3>
                         Examples:
@@ -74,7 +79,7 @@
             </div>
 
 
-            <div class="col-md-8" >
+            <div class="col-md-8">
                 <canvas id="springydemo" height="350" width="600px;"/>
             </div>
         </div>
