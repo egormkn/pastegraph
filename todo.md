@@ -2,6 +2,9 @@
 
 DONE
 * three ways of graph is done
+* как присваивтаь функции в переменные
+* http://www.w3schools.com/jsref/event_onchange.asp
+* localStorage
 
 MVP
 
