@@ -1,21 +1,24 @@
 #TODO
 
+DONE
+* three ways of graph is done
+
 MVP
 
 * good layout
-* three ways of graphs
-* handling errors
-* add localstorage
-* fix enumeration
-* ignore first line
-* add graph to adressbar
-* parse graph from adressbar
+* convertation
 * light update with radio buttons
 * hard update
+* handling errors
+* add localstorage
 
 Addional functions
 * mocha tests
 * bit.ly 
+* fix enumeration
+* ignore first line
+* add graph to adressbar
+* parse graph from adressbar 
  
 Features
 

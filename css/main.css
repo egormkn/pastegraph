@@ -6,7 +6,6 @@
 html,
 body {
     height: 100%;
-
 }
 
 .wrapper {
@@ -58,4 +57,13 @@ textarea {
 
 canvas {
  border: 1px solid black;
+}
+
+legend {
+
+}
+#refresh,
+#refresh:active,
+#refresh:focus {
+    outline: none;
 }
