@@ -8,12 +8,12 @@ DONE
 
 MVP
 
-* good layout
-* convertation
+* [x] good layout
+* [] add directional, convertation
 * light update with radio buttons
-* hard update
-* handling errors
-* add localstorage
+* hard update with refresh
+* handling errors and delete them
+* add graph to localstorage and restore
 
 Addional functions
 * mocha tests

@@ -43,11 +43,11 @@
                     <legend>Graph source</legend>
                     <fieldset align="left">
                         <div id="button-types" >
-                            <label class="radio-inline"><input type="radio" name="draw-method" value="matrix" checked>Adjacency
+                            <label class="radio-inline"><input type="radio" name="draw-method" value="matrix"> Adjacency
                                 matrix</label>
                             <label class="radio-inline"><input type="radio" name="draw-method" value="edgeList">Edge
                                 list</label>
-                            <label class="radio-inline"><input type="radio" name="draw-method" value="adjacencyList">Adjacency
+                            <label class="radio-inline"><input type="radio" name="draw-method" value="adjacencyList" checked>Adjacency
                                 list</label>
                         </div>
                         <div class="checkbox" style="margin-left: 0px;margin-top: 10px; margin-bottom: 10px;">
@@ -59,9 +59,10 @@
                         </div>
                     </fieldset>
                     <textarea id="graph-source" class="graph-source">
+2 2 4
+3 1 3 4
 1 2
-2 3
-3 1
+2 1 2
                     </textarea>
                 </form>
                 <button style="margin-top:5%;" id="refresh" type="button" class="btn btn-success btn-lg btn-block">
