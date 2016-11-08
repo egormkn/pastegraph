@@ -41,13 +41,15 @@
 
                 <form>
                     <legend>Graph source</legend>
-                    <fieldset>
-                        <label class="radio-inline"><input type="radio" name="draw-method" value="matrix" checked>Adjacency
-                            matrix</label>
-                        <label class="radio-inline"><input type="radio" name="draw-method" value="edgeList">Edge
-                            list</label>
-                        <label class="radio-inline"><input type="radio" name="draw-method" value="adjacencyList">Adjacency
-                            list</label>
+                    <fieldset align="left">
+                        <div id="button-types" >
+                            <label class="radio-inline"><input type="radio" name="draw-method" value="matrix" checked>Adjacency
+                                matrix</label>
+                            <label class="radio-inline"><input type="radio" name="draw-method" value="edgeList">Edge
+                                list</label>
+                            <label class="radio-inline"><input type="radio" name="draw-method" value="adjacencyList">Adjacency
+                                list</label>
+                        </div>
                         <div class="checkbox" style="margin-left: 0px;margin-top: 10px; margin-bottom: 10px;">
                             <label style="font-size: 1.3em">
                                 <input id="directional" type="checkbox" value="">
@@ -57,14 +59,17 @@
                         </div>
                     </fieldset>
                     <textarea id="graph-source" class="graph-source">
-0 0 0
-1 0 1
-1 0 1
+1 2
+2 3
+3 1
                     </textarea>
                 </form>
                 <button style="margin-top:5%;" id="refresh" type="button" class="btn btn-success btn-lg btn-block">
                     Draw
                 </button>
+                <div id="errors">
+
+                </div>
                 <div class="examples">
                     <h3>
                         Examples:

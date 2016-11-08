@@ -67,3 +67,28 @@ legend {
 #refresh:focus {
     outline: none;
 }
+
+input[type="radio"]{
+    margin-left: 30px;
+    margin-right: 6px;
+}
+
+#button-types label:first-child{
+    margin-left: -30px;
+}
+
+#button-types label {
+    font-size: 1.3em;
+}
+
+#button-types {
+    margin-top: 5px;
+}
+
+#errors {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-color: red;
+}
+
+

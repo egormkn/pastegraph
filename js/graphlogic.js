@@ -25,19 +25,23 @@ $(document).ready(function () {
 
     var buildGraph = function () {
         var graph = new Springy.Graph();
-        /*
-         if($("input[type='radio'][value='matrix']").is(":checked"))
-         drawMatrix();
-         if($("input[type='radio'][value='edgeList']").is(":checked"))
-         drawEdgeList();
-         if($("input[type='radio'][value='AdjacencyList']").is(":checked"))
-         drawAdjacencyList();*/
+        var graphSource= textTo2DArray();
 
+        if($("input[type='radio'][value='matrix']").is(":checked"))
+         graph = getAdjacencyMatrix(graphSource);
+        else if($("input[type='radio'][value='edgeList']").is(":checked"))
+         graph = getEdgeList(graphSource);
+        else if($("input[type='radio'][value='AdjacencyList']").is(":checked"))
+         graph = getAdjacencyList(graphSource);
+        return graph;
+    };
+
+
+    function getAdjacencyMatrix(matrix){
         var isDirectional = $('#directional').is(':checked');
-        var matrix = textTo2DArray();
-
         var vertices = matrix.length;
         var numeration = 1;
+        var graph = new Springy.Graph();
 
         for (var i = numeration; i <= vertices; i++)
             graph.addNodes(i);
@@ -72,12 +76,44 @@ $(document).ready(function () {
                 }
         for (var i = 0; i < used.length; i++)
             if (used[i] == 0) graph.removeNode(graph.nodes[i]);
-        graphToEdgeList(graph);
-        graphToAdjacencyList(graph);
         return graph;
-    };
+    }
 
-    function graphToEdgeList(graph) {
+    function getEdgeList(graph) {
+        var newGraph = new Springy.Graph();
+
+        for (var i = 0; i < graph.length; i++)
+            if (graph[i].length > 2) {
+                $("#errors").text("Wrong input, check out edges!");
+                $("#errors").css("color", "red");
+                break;
+            } else {
+                newGraph.addNodes(graph[i][0], graph[i][1]);
+                newGraph.addEdges([graph[i][0], graph[i][1], {directional: false}]);
+            }
+        return newGraph;
+    }
+
+
+    function getAdjacencyList(graph) {
+        var newGraph = new Springy.Graph();
+        for (var i = 0; i < graph.length; i++)
+            if (graph[i][0] > graph[i].length - 1 || graph[i][0] < graph[i].length - 1) {
+                $("#errors").text("Wrong input, check out number of edges!");
+                $("#errors").css("color", "red");
+                break;
+            } else {
+                newGraph.addNodes(i + 1);
+                for(var j = 1; j < graph[i].length; j++) {
+
+                    newGraph.addNodes(graph[i][j]);
+                    newGraph.addEdges([i + 1, graph[i][j], {directional: false}]);
+                }
+            }
+        return newGraph;
+    }
+
+    graphToEdgeList = function (graph) {
         var edgeList = [];
         for (var edgeIndex = 0; edgeIndex < graph.edges.length; edgeIndex++) {
             var edge = graph.edges[edgeIndex];
@@ -86,7 +122,8 @@ $(document).ready(function () {
         return edgeList;
     };
 
-    function graphToAdjacencyList(graph) {
+
+    graphToAdjacencyList = function (graph) {
         var adjanceyList = new Array(graph.nodes.length);
 
 
@@ -107,7 +144,7 @@ $(document).ready(function () {
             }
             finalAdjanceyList.push(answerString);
         }
-        console.log(finalAdjanceyList.join('\n'));
+        return finalAdjanceyList.join('\n');
     };
 
     $("#refresh").click(function () {

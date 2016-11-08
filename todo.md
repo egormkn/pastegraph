@@ -3,8 +3,8 @@
 DONE
 * three ways of graph is done
 * как присваивтаь функции в переменные
-* http://www.w3schools.com/jsref/event_onchange.asp
 * localStorage
+* delete .idea from git
 
 MVP
 
@@ -17,15 +17,17 @@ MVP
 
 Addional functions
 * mocha tests
-* bit.ly 
 * fix enumeration
 * ignore first line
 * add graph to adressbar
 * parse graph from adressbar 
+* bit.ly 
  
 Features
 
 * weights
+* примеры разных графов
+* экспорт графа в виде картинок
 
 Info <br>
 how to make get 
