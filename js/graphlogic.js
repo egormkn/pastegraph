@@ -31,7 +31,7 @@ $(document).ready(function () {
          graph = getAdjacencyMatrix(graphSource);
         else if($("input[type='radio'][value='edgeList']").is(":checked"))
          graph = getEdgeList(graphSource);
-        else if($("input[type='radio'][value='AdjacencyList']").is(":checked"))
+        else if($("input[type='radio'][value='adjacencyList']").is(":checked"))
          graph = getAdjacencyList(graphSource);
         return graph;
     };
@@ -97,19 +97,24 @@ $(document).ready(function () {
 
     function getAdjacencyList(graph) {
         var newGraph = new Springy.Graph();
-        for (var i = 0; i < graph.length; i++)
-            if (graph[i][0] > graph[i].length - 1 || graph[i][0] < graph[i].length - 1) {
+        for (var i = 1; i <= graph.length; i++) {
+            console.log(graph[i - 1][0]);
+            if (graph[i - 1][0] > graph[i - 1].length - 1 || graph[i - 1][0] < graph[i - 1].length - 1) {
                 $("#errors").text("Wrong input, check out number of edges!");
                 $("#errors").css("color", "red");
                 break;
             } else {
-                newGraph.addNodes(i + 1);
-                for(var j = 1; j < graph[i].length; j++) {
-
-                    newGraph.addNodes(graph[i][j]);
-                    newGraph.addEdges([i + 1, graph[i][j], {directional: false}]);
+                newGraph.addNodes(i);
+                for (var j = 1; j < graph[i - 1].length; j++) {
+                    newGraph.addNodes(graph[i - 1][j]);
+                    newGraph.addEdges([i, graph[i - 1][j], {directional: false}]);
                 }
             }
+
+        }
+        //console.log("NODES IN GRAPH")
+        //for(var cur in newGraph.edges)
+        //    console.log(cur);
         return newGraph;
     }
 
