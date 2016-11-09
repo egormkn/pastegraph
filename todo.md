@@ -10,7 +10,7 @@ MVP
 
 * [x] good layout
 * [x] add directional, convertation
-* light update with radio buttons + handling errors and delete them
+* [x] light update with radio buttons + handling errors and delete them
 * * add graph to localstorage and restore + hard update with refresh
 
 Addional functions

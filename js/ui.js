@@ -1,9 +1,5 @@
 $(document).ready(function () {
 
-
-    //if($("input[type='radio'][value='matrix']").is(":checked"))
-   //     graph = getAdjacencyMatrix(graphSource);
-
     function clean_errors(){
         $('#errors').hide();
         $('#errors').text('');
@@ -28,6 +24,7 @@ $(document).ready(function () {
 
     $("#refresh").click(function () {
         buildedGraph = buildGraph();
+        $('#errors').show();
         if (buildedGraph !== undefined) {
             drawingGraph = $("#springydemo").springy({graph: buildedGraph});
         }

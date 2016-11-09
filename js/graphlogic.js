@@ -20,9 +20,6 @@ $(document).ready(function () {
         return foundEdge;
     }
 
-
-    var drawingGraph;
-
     buildGraph = function () {
         var graph = new Springy.Graph();
         var graphSource= textTo2DArray();
@@ -98,7 +95,7 @@ $(document).ready(function () {
 
     function getEdgeList(graph) {
         var newGraph = new Springy.Graph();
-        for (var i = 0; i < graph.length; i++)
+        for (var i = 0; i < graph.length; i++) {
             if (graph[i].length > 2) {
                 $("#errors").text("Wrong input, check out edges!");
                 $("#errors").css("color", "red");
@@ -106,24 +103,24 @@ $(document).ready(function () {
                 $("#errors").css("font-size", "1.2em");
                 break;
             } else {
-                if(!(graph[i][0] in newGraph.nodeSet) && graph[i][0] !== undefined)
+                if (!(graph[i][0] in newGraph.nodeSet) && graph[i][0] !== undefined)
                     newGraph.addNodes(graph[i][0]);
-                if(!(graph[i][1] in newGraph.nodeSet) && graph[i][1] !== undefined)
+                if (!(graph[i][1] in newGraph.nodeSet) && graph[i][1] !== undefined)
                     newGraph.addNodes(graph[i][1]);
-                if(isAdjacency(newGraph, graph[i][0], graph[i][1]) && !isDirectional)
+                if (isAdjacency(newGraph, graph[i][0], graph[i][1]) && !isDirectional)
                     continue;
                 else {
-                    if(graph[i][0] !== undefined && graph[i][1] !== undefined)
+                    if (graph[i][0] !== undefined && graph[i][1] !== undefined)
                         newGraph.addEdges([graph[i][0], graph[i][1], {directional: isDirectional}]);
                 }
             }
+        }
         return newGraph;
     }
 
 
     function getAdjacencyList(graph) {
         var newGraph = new Springy.Graph();
-        console.log("GRAPH.LENGTH " + graph.length);
         for (var i = 1; i <= graph.length; i++) {
             if (graph[i - 1][0] > graph[i - 1].length - 1 || graph[i - 1][0] < graph[i - 1].length - 1) {
                 $("#errors").text("Wrong input, check out number of edges!");
@@ -160,19 +157,20 @@ $(document).ready(function () {
 
     graphToMatrix = function (graph) {
         var matrixAns = [];
-        for (var i = 0; i < graph.nodes.length + 1; ++i) {
+        for (var i = 0; i < graph.nodes.length; ++i) {
             matrixAns[i] = [];
-            for (var j = 0; j < graph.nodes.length + 1; ++j) {
+            for (var j = 0; j < graph.nodes.length; ++j) {
                 matrixAns[i][j] = 0;
             }
         }
-
-        console.log(matrixAns);
         for (var edgeIndex = 0; edgeIndex < graph.edges.length; edgeIndex++) {
             var edge = graph.edges[edgeIndex];
-            console.log(edge.source.id + "  " + edge.target.id);
-            matrixAns[edge.source.id][edge.target.id] = 1;
-            matrixAns[edge.target.id][edge.source.id] = 1;
+            if(!isDirectional) {
+                matrixAns[edge.source.id - 1][edge.target.id - 1] = 1;
+                matrixAns[edge.target.id - 1][edge.source.id - 1] = 1;
+            } else{
+                matrixAns[edge.source.id - 1][edge.target.id - 1] = 1;
+            }
         }
         var lines = [];
         for(var row in matrixAns){
@@ -185,12 +183,17 @@ $(document).ready(function () {
     graphToAdjacencyList = function (graph) {
         var adjanceyList = new Array(graph.nodes.length);
 
-
         for (var edgeIndex = 0; edgeIndex < graph.edges.length; edgeIndex++) {
             var edge = graph.edges[edgeIndex];
-            if (adjanceyList[edge.source.id] == undefined)
-                adjanceyList[edge.source.id] = new Array();
-            adjanceyList[edge.source.id].push(edge.target.id);
+            if (adjanceyList[edge.source.id - 1] == undefined)
+                adjanceyList[edge.source.id - 1] = new Array();
+            adjanceyList[edge.source.id - 1].push(edge.target.id);
+
+            if(!isDirectional) {
+                if (adjanceyList[edge.target.id - 1] == undefined)
+                    adjanceyList[edge.target.id - 1] = new Array();
+                adjanceyList[edge.target.id - 1].push(edge.source.id);
+            }
         }
         var finalAdjanceyList = new Array();
         for (var i = 0; i < adjanceyList.length; i++) {
