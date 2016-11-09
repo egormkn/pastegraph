@@ -23,7 +23,7 @@ $(document).ready(function () {
 
     var drawingGraph;
 
-    var buildGraph = function () {
+    buildGraph = function () {
         var graph = new Springy.Graph();
         var graphSource= textTo2DArray();
         isDirectional = $('#directional').is(':checked');
@@ -155,7 +155,30 @@ $(document).ready(function () {
             var edge = graph.edges[edgeIndex];
             edgeList.push(edge.source.id + " " + edge.target.id);
         }
-        return edgeList;
+        return edgeList.join('\n');
+    };
+
+    graphToMatrix = function (graph) {
+        var matrixAns = [];
+        for (var i = 0; i < graph.nodes.length + 1; ++i) {
+            matrixAns[i] = [];
+            for (var j = 0; j < graph.nodes.length + 1; ++j) {
+                matrixAns[i][j] = 0;
+            }
+        }
+
+        console.log(matrixAns);
+        for (var edgeIndex = 0; edgeIndex < graph.edges.length; edgeIndex++) {
+            var edge = graph.edges[edgeIndex];
+            console.log(edge.source.id + "  " + edge.target.id);
+            matrixAns[edge.source.id][edge.target.id] = 1;
+            matrixAns[edge.target.id][edge.source.id] = 1;
+        }
+        var lines = [];
+        for(var row in matrixAns){
+            lines.push(matrixAns[row].join(' '));
+        }
+        return lines.join('\n');
     };
 
 
@@ -183,12 +206,7 @@ $(document).ready(function () {
         return finalAdjanceyList.join('\n');
     };
 
-    $("#refresh").click(function () {
-        var buildedGraph = buildGraph();
-        if (buildedGraph !== undefined) {
-            drawingGraph = $("#springydemo").springy({graph: buildedGraph});
-        }
-    });
+
 
     var today = new Date();
     var year = today.getFullYear();
