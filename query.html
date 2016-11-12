@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pastegraph is a tool for plotting graph</title>
+    <meta charset="utf-8"/>
+    <script src="js/jquery.js"></script>
+</head>
+
+<body>
+<p id="text">0</p>
+<button id="refresh" type="button">
+    Draw
+</button>
+
+
+<button id="get_link" type="button">
+    Get short link
+</button>
+
+<a id="short-link">
+
+</a>
+
+<script>
+    $(document).ready(function () {
+        var old_link = window.location.href
+        var link;
+        $('#refresh').click(function () {
+            var paragraphText = $("#text");
+            var number = parseInt(paragraphText.text(), 10) + 1;
+            paragraphText.text(number)
+            history.pushState({query: number}, "graphpage", "?q=" + number);
+        });
+        var link;
+        $('#get_link').click(function () {
+
+            var xhr = new XMLHttpRequest();
+            var requestURL = "https://api-ssl.bitly.com/v3/shorten?access_token=e39789de6e564128360fef76d31b84f82b0865f9&longUrl="
+            var currentURL = "http://www.yandex.ru&format=txt";
+            xhr.open("GET", requestURL + currentURL, true);
+            xhr.send();
+
+            xhr.onreadystatechange = processRequest;
+
+            function processRequest(e) {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var response = xhr.responseText;
+                    link = response;
+                }
+                $("#short-link").text(link);
+                $("#short-link").attr("href", link);
+            }
+
+        });
+    });
+
+</script>
+</body>
+</html>
