@@ -30,6 +30,45 @@ $(document).ready(function () {
         }
     });
 
+    var textarea = document.getElementById('graph-source');
+    var directionalInput = document.getElementById('directional');
+    if(!localStorage.getItem('graph')){
+        populateStorage();
+    } else{
+        setText();
+    }
+    function populateStorage() {
+        localStorage.setItem('graph', $('#graph-source').val().trim());
+        localStorage.setItem('directed', $('#directional').is(':checked'));
+        var method;
+        $("input[type='radio']").each(function () {
+            if ($(this).is(':checked')) {
+                method =  this.value;
+            }
+        });
+        localStorage.setItem('method', method);
+        setText();
+    }
+    function setText(){
+        var graphText = localStorage.getItem('graph');
+        var directionalValue = localStorage.getItem('directed');
+        var method = localStorage.getItem('method');
+        $('directional').prop('checked', directionalValue);
+        $("input[type='radio']").each(function () {
+            if (this.value == method) {
+                $(this).prop("checked", true);
+            }
+        });
+        document.getElementById('graph-source').value = graphText;
+        $('refresh').click();
+    }
+    directionalInput.onchange  = populateStorage;
+    textarea.onchange = populateStorage;
+
+    $("input[type='radio']").change(function(){
+        populateStorage();
+    });
+
 
 
     // draw graph immediately when page is opened
