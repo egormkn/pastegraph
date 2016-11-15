@@ -23,6 +23,7 @@ $(document).ready(function () {
     });
 
     $("#refresh").click(function () {
+        clean_errors();
         buildedGraph = buildGraph();
         $('#errors').show();
         if (buildedGraph !== undefined) {
@@ -32,14 +33,17 @@ $(document).ready(function () {
 
     var textarea = document.getElementById('graph-source');
     var directionalInput = document.getElementById('directional');
+    var ignoringFirstLine = document.getElementById('ignore-first-line');
     if(!localStorage.getItem('graph')){
         populateStorage();
     } else{
         setText();
     }
     function populateStorage() {
+        console.log("POPEULATE STORAGE");
         localStorage.setItem('graph', $('#graph-source').val().trim());
         localStorage.setItem('directed', $('#directional').is(':checked'));
+        localStorage.setItem('ignore-first-line', $('#ignore-first-line').is(':checked'));
         var method;
         $("input[type='radio']").each(function () {
             if ($(this).is(':checked')) {
@@ -47,13 +51,27 @@ $(document).ready(function () {
             }
         });
         localStorage.setItem('method', method);
-        setText();
+        //setText();
     }
     function setText(){
+        console.log("SETTING TEXT");
         var graphText = localStorage.getItem('graph');
         var directionalValue = localStorage.getItem('directed');
         var method = localStorage.getItem('method');
-        $('directional').prop('checked', directionalValue);
+        var ignoringValue = localStorage.getItem('ignore-first-line');
+
+        if(ignoringValue == "true")
+            $('#ignore-first-line').prop('checked', true);
+        else
+            $('#ignore-first-line').prop('checked', false);
+
+        if(directionalValue == "true")
+            $('#directional').prop('checked', true);
+        else
+            $('#directional').prop('checked', false);
+
+
+        $('#directional').prop('checked', directionalValue);
         $("input[type='radio']").each(function () {
             if (this.value == method) {
                 $(this).prop("checked", true);
@@ -64,7 +82,7 @@ $(document).ready(function () {
     }
     directionalInput.onchange  = populateStorage;
     textarea.onchange = populateStorage;
-
+    ignoringFirstLine.onchange = populateStorage;
     $("input[type='radio']").change(function(){
         populateStorage();
     });

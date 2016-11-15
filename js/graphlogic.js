@@ -1,10 +1,14 @@
 $(document).ready(function () {
+    isFirstLineIgnored = $('#ignore-first-line').is(':checked');
+    console.log(isFirstLineIgnored);
     function textTo2DArray() {
         var foundItem = $("textarea#graph-source").val().trim().split("\n");
-        for (var i = 0; i < foundItem.length; i++) {
-            //foundItem[i] = foundItem[i].trim().split(/\s+/);
+        if (isFirstLineIgnored)
+            foundItem.splice(0, 1);
+        for (var i = 0; i < foundItem.length; i++)
             foundItem[i] = foundItem[i].trim().match(/\S+/g) || [];
-        }
+
+        console.log(foundItem);
         return (foundItem);
     }
 
@@ -21,19 +25,20 @@ $(document).ready(function () {
     }
 
     buildGraph = function () {
-        var graph = new Springy.Graph();
-        var graphSource= textTo2DArray();
+        isFirstLineIgnored = $('#ignore-first-line').is(':checked');
         isDirectional = $('#directional').is(':checked');
-        if($("input[type='radio'][value='matrix']").is(":checked"))
-         graph = getAdjacencyMatrix(graphSource);
-        else if($("input[type='radio'][value='edgeList']").is(":checked"))
-         graph = getEdgeList(graphSource);
-        else if($("input[type='radio'][value='adjacencyList']").is(":checked"))
-         graph = getAdjacencyList(graphSource);
+        var graph = new Springy.Graph();
+        var graphSource = textTo2DArray();
+        if ($("input[type='radio'][value='matrix']").is(":checked"))
+            graph = getAdjacencyMatrix(graphSource);
+        else if ($("input[type='radio'][value='edgeList']").is(":checked"))
+            graph = getEdgeList(graphSource);
+        else if ($("input[type='radio'][value='adjacencyList']").is(":checked"))
+            graph = getAdjacencyList(graphSource);
         return graph;
     };
 
-    var isEmpty = function(obj) {
+    var isEmpty = function (obj) {
         for (var k in obj) {
             if (obj.hasOwnProperty(k)) {
                 return false;
@@ -42,7 +47,7 @@ $(document).ready(function () {
         return true;
     };
 
-    function getAdjacencyMatrix(matrix){
+    function getAdjacencyMatrix(matrix) {
         var vertices = matrix.length;
         var numeration = 1;
         var graph = new Springy.Graph();
@@ -83,12 +88,12 @@ $(document).ready(function () {
         return graph;
     }
 
-    function isAdjacency(graph, node1, node2){
-        for(var cur in graph.adjacency[node1])
-            if(cur == node2)
+    function isAdjacency(graph, node1, node2) {
+        for (var cur in graph.adjacency[node1])
+            if (cur == node2)
                 return true;
-        for(var cur in graph.adjacency[node2])
-            if(cur == node1)
+        for (var cur in graph.adjacency[node2])
+            if (cur == node1)
                 return true;
         return false;
     }
@@ -97,6 +102,9 @@ $(document).ready(function () {
         var newGraph = new Springy.Graph();
         for (var i = 0; i < graph.length; i++) {
             if (graph[i].length > 2) {
+                console.log("LENGTH of GRAPH " + graph[i].length);
+                console.log(graph[i][2]);
+                console.log(graph[i][1]);
                 $("#errors").text("Wrong input, check out edges!");
                 $("#errors").css("color", "red");
                 $("#errors").css("font-weight", "bold");
@@ -127,13 +135,13 @@ $(document).ready(function () {
                 $("#errors").css("color", "red");
                 return undefined;
             } else {
-                if(!(i in newGraph.nodeSet))
+                if (!(i in newGraph.nodeSet))
                     newGraph.addNodes(i);
 
                 for (var j = 1; j < graph[i - 1].length; j++) {
-                    if(!(graph[i - 1][j] in newGraph.nodeSet))
+                    if (!(graph[i - 1][j] in newGraph.nodeSet))
                         newGraph.addNodes(graph[i - 1][j]);
-                    if(isAdjacency(newGraph, i, graph[i - 1][j]) && !isDirectional)
+                    if (isAdjacency(newGraph, i, graph[i - 1][j]) && !isDirectional)
                         continue;
                     else {
                         if (graph[i - 1][j] !== undefined && i !== undefined)
@@ -165,15 +173,15 @@ $(document).ready(function () {
         }
         for (var edgeIndex = 0; edgeIndex < graph.edges.length; edgeIndex++) {
             var edge = graph.edges[edgeIndex];
-            if(!isDirectional) {
+            if (!isDirectional) {
                 matrixAns[edge.source.id - 1][edge.target.id - 1] = 1;
                 matrixAns[edge.target.id - 1][edge.source.id - 1] = 1;
-            } else{
+            } else {
                 matrixAns[edge.source.id - 1][edge.target.id - 1] = 1;
             }
         }
         var lines = [];
-        for(var row in matrixAns){
+        for (var row in matrixAns) {
             lines.push(matrixAns[row].join(' '));
         }
         return lines.join('\n');
@@ -189,7 +197,7 @@ $(document).ready(function () {
                 adjanceyList[edge.source.id - 1] = new Array();
             adjanceyList[edge.source.id - 1].push(edge.target.id);
 
-            if(!isDirectional) {
+            if (!isDirectional) {
                 if (adjanceyList[edge.target.id - 1] == undefined)
                     adjanceyList[edge.target.id - 1] = new Array();
                 adjanceyList[edge.target.id - 1].push(edge.source.id);
@@ -208,7 +216,6 @@ $(document).ready(function () {
         }
         return finalAdjanceyList.join('\n');
     };
-
 
 
     var today = new Date();
