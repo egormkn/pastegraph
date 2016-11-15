@@ -34,31 +34,31 @@ $(document).ready(function () {
     var textarea = document.getElementById('graph-source');
     var directionalInput = document.getElementById('directional');
     var ignoringFirstLine = document.getElementById('ignore-first-line');
-    if(!localStorage.getItem('graph')){
+    if(!sessionStorage.getItem('graph')){
         populateStorage();
     } else{
         setText();
     }
+
     function populateStorage() {
-        console.log("POPEULATE STORAGE");
-        localStorage.setItem('graph', $('#graph-source').val().trim());
-        localStorage.setItem('directed', $('#directional').is(':checked'));
-        localStorage.setItem('ignore-first-line', $('#ignore-first-line').is(':checked'));
+
+        sessionStorage.setItem('graph', $('#graph-source').val().trim());
+        sessionStorage.setItem('directed', $('#directional').is(':checked'));
+        sessionStorage.setItem('ignore-first-line', $('#ignore-first-line').is(':checked'));
         var method;
         $("input[type='radio']").each(function () {
             if ($(this).is(':checked')) {
                 method =  this.value;
             }
         });
-        localStorage.setItem('method', method);
-        //setText();
+        sessionStorage.setItem('method', method);
     }
     function setText(){
         console.log("SETTING TEXT");
-        var graphText = localStorage.getItem('graph');
-        var directionalValue = localStorage.getItem('directed');
-        var method = localStorage.getItem('method');
-        var ignoringValue = localStorage.getItem('ignore-first-line');
+        var graphText = sessionStorage.getItem('graph');
+        var directionalValue = sessionStorage.getItem('directed');
+        var method = sessionStorage.getItem('method');
+        var ignoringValue = sessionStorage.getItem('ignore-first-line');
 
         if(ignoringValue == "true")
             $('#ignore-first-line').prop('checked', true);
@@ -80,13 +80,15 @@ $(document).ready(function () {
         document.getElementById('graph-source').value = graphText;
         $('refresh').click();
     }
+
+
     directionalInput.onchange  = populateStorage;
     textarea.onchange = populateStorage;
     ignoringFirstLine.onchange = populateStorage;
+
     $("input[type='radio']").change(function(){
         populateStorage();
     });
-
 
 
     // draw graph immediately when page is opened
