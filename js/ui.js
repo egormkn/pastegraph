@@ -123,6 +123,7 @@ $(document).ready(function () {
         xhr.send();
         xhr.onreadystatechange = processRequest;
         function processRequest(e) {
+            var link;
             if (xhr.readyState == 4 && xhr.status == 200) {
                 var response = xhr.responseText;
                 link = response;
