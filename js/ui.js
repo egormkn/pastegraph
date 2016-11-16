@@ -7,7 +7,8 @@ $(document).ready(function () {
      algorithm: at first we try to parse link and then try to build
      graph from textarea
      */
-    parse_link();
+    if(parse_link() != 1)
+        $("#refresh").click();
 
     function clean_errors() {
         $('#errors').hide();
@@ -45,7 +46,7 @@ $(document).ready(function () {
     });
 
     // draw graph immediately when page is opened
-    $("#refresh").click();
+
 
     function parse_link() {
         var currentLink = window.location.href;
@@ -91,7 +92,7 @@ $(document).ready(function () {
             $("textarea#graph-source").val(graphToMatrix(graph));
             $("input[type='radio'][value='matrix']").prop("checked", true);
         }
-
+        return 1;
 
     }
 
