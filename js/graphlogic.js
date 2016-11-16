@@ -1,11 +1,50 @@
+function getEdgeList(graph) {
+    var newGraph = new Springy.Graph();
+    for (var i = 0; i < graph.length; i++) {
+        if (graph[i].length > 2) {
+            console.log(graph[i][0],graph[i][2]);
+            $("#errors").text("Wrong input, check out edges!");
+            $("#errors").css("color", "red");
+            $("#errors").css("font-weight", "bold");
+            $("#errors").css("font-size", "1.2em");
+            break;
+        } else {
+            if (!(graph[i][0] in newGraph.nodeSet) && graph[i][0] !== undefined)
+                newGraph.addNodes(graph[i][0]);
+            if (!(graph[i][1] in newGraph.nodeSet) && graph[i][1] !== undefined)
+                newGraph.addNodes(graph[i][1]);
+            if (isAdjacency(newGraph, graph[i][0], graph[i][1]) && !isDirectional)
+                continue;
+            else {
+                if (graph[i][0] !== undefined && graph[i][1] !== undefined)
+                    newGraph.addEdges([graph[i][0], graph[i][1], {directional: isDirectional}]);
+            }
+        }
+    }
+    return newGraph;
+}
+
+
+function isAdjacency(graph, node1, node2) {
+    for (var cur in graph.adjacency[node1])
+        if (cur == node2)
+            return true;
+    for (var cur in graph.adjacency[node2])
+        if (cur == node1)
+            return true;
+    return false;
+}
+
+function textTo2DArray() {
+    var foundItem = $("textarea#graph-source").val().trim().split("\n");
+    for (var i = 0; i < foundItem.length; i++)
+        foundItem[i] = foundItem[i].trim().match(/\S+/g) || [];
+    console.log(foundItem);
+    return (foundItem);
+}
+
 $(document).ready(function () {
 
-    function textTo2DArray() {
-        var foundItem = $("textarea#graph-source").val().trim().split("\n");
-        for (var i = 0; i < foundItem.length; i++)
-            foundItem[i] = foundItem[i].trim().match(/\S+/g) || [];
-        return (foundItem);
-    }
 
     function findEdge(edges, from, to) {
         var foundEdge = false;
@@ -93,30 +132,7 @@ $(document).ready(function () {
         return false;
     }
 
-    function getEdgeList(graph) {
-        var newGraph = new Springy.Graph();
-        for (var i = 0; i < graph.length; i++) {
-            if (graph[i].length > 2) {
-                $("#errors").text("Wrong input, check out edges!");
-                $("#errors").css("color", "red");
-                $("#errors").css("font-weight", "bold");
-                $("#errors").css("font-size", "1.2em");
-                break;
-            } else {
-                if (!(graph[i][0] in newGraph.nodeSet) && graph[i][0] !== undefined)
-                    newGraph.addNodes(graph[i][0]);
-                if (!(graph[i][1] in newGraph.nodeSet) && graph[i][1] !== undefined)
-                    newGraph.addNodes(graph[i][1]);
-                if (isAdjacency(newGraph, graph[i][0], graph[i][1]) && !isDirectional)
-                    continue;
-                else {
-                    if (graph[i][0] !== undefined && graph[i][1] !== undefined)
-                        newGraph.addEdges([graph[i][0], graph[i][1], {directional: isDirectional}]);
-                }
-            }
-        }
-        return newGraph;
-    }
+
 
 
     function getAdjacencyList(graph) {

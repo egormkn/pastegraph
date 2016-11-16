@@ -1,17 +1,16 @@
 #TODO
+[DONE]
+* ignore first line
 
 Addional functions
 * mocha tests
 * fix enumeration
-* ignore first line
 * add graph to adressbar
 * parse graph from adressbar 
 * bit.ly
 * add yandex.metrika stats
 * redisign 
 * read about JSON.parse
-* https://www.kirupa.com/html5/making_http_requests_js.htm
-* https://learn.javascript.ru/closures
  
 Features
 

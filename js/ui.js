@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     function clean_errors() {
         $('#errors').hide();
         $('#errors').text('');
@@ -28,6 +27,7 @@ $(document).ready(function () {
         clean_errors();
         buildedGraph = buildGraph();
         $("#links").text(update_link());
+        parse_link();
         $('#errors').show();
         if (buildedGraph !== undefined) {
             drawingGraph = $("#springydemo").springy({graph: buildedGraph});
@@ -91,11 +91,58 @@ $(document).ready(function () {
     // draw graph immediately when page is opened
     $("#refresh").click();
 
+    function parse_link() {
+        var currentLink = window.location.href;
+        var qmark = currentLink.indexOf("?");
+        if (qmark < 0)
+            return "";
+        currentLink = currentLink.slice(qmark);
+        var args = decodeURI(currentLink);
+        var arrayArgs = args.split("=");
+        if (arrayArgs.length < 3)
+            return "";
+        var method = arrayArgs[2];
+        var directed = false;
+
+        if (arrayArgs[1].substr(0, 8) === "digraph{") {
+            directed = true;
+            arrayArgs[1] = arrayArgs[1].slice(8);
+        } else if(arrayArgs[1].substr(0, 6) === "graph{"){
+            directed = false;
+            arrayArgs[1] = arrayArgs[1].slice(6);
+        } else{
+            return "";
+        }
+        arrayArgs[1] = arrayArgs[1].substr(0, arrayArgs[1].length - 8);
+        var edges = arrayArgs[1].split(",");
+        for(var i = 0; i < edges.length; i++)
+            edges[i] = edges[i].replace("-", ' ');
+
+        if (directed == "true")
+            $('#directional').prop('checked', true);
+        else
+            $('#directional').prop('checked', false);
+
+        var stringEdges = edges.join('\n');
+        console.log(stringEdges);
+        $("textarea#graph-source").val(stringEdges);
+        var graph = getEdgeList(textTo2DArray(stringEdges));
+
+        if (method == "edgeList"){
+            $("input[type='radio'][value='edgeList']").prop("checked", true);
+        } else if(method == "adjacencyList"){
+            $("input[type='radio'][value='edgeList']").prop("checked", true);
+        } else if(method == "matrix"){
+            $("input[type='radio'][value='edgeList']").prop("checked", true);
+        }
+
+
+    }
+
     function update_link() {
         if (buildedGraph.edges.length == 0)
             return "";
         var result = [];
-        var domainName = "https://misteraverin.github.io/pastegraph/?q=";
         var method;
         $("input[type='radio']").each(function () {
             if ($(this).is(':checked')) {
@@ -107,7 +154,7 @@ $(document).ready(function () {
             result.push(edge.source.id + "-" + edge.target.id);
         }
         result.join(',');
-
-        return domainName + (isDirectional ? "digraph" : "graph") + "{" + result.join(",") + "}" + "&method=" + method;
+        var finalLink = (isDirectional ? "digraph" : "graph") + "{" + result.join(",") + "}" + "&method=" + method;
+        history.pushState({query: finalLink}, "graphpage", "?q=" + finalLink)
     }
 });
