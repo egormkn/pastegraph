@@ -1,14 +1,9 @@
 $(document).ready(function () {
-    isFirstLineIgnored = $('#ignore-first-line').is(':checked');
-    console.log(isFirstLineIgnored);
+
     function textTo2DArray() {
         var foundItem = $("textarea#graph-source").val().trim().split("\n");
-        if (isFirstLineIgnored)
-            foundItem.splice(0, 1);
         for (var i = 0; i < foundItem.length; i++)
             foundItem[i] = foundItem[i].trim().match(/\S+/g) || [];
-
-        console.log(foundItem);
         return (foundItem);
     }
 
@@ -25,7 +20,7 @@ $(document).ready(function () {
     }
 
     buildGraph = function () {
-        isFirstLineIgnored = $('#ignore-first-line').is(':checked');
+
         isDirectional = $('#directional').is(':checked');
         var graph = new Springy.Graph();
         var graphSource = textTo2DArray();
@@ -102,9 +97,6 @@ $(document).ready(function () {
         var newGraph = new Springy.Graph();
         for (var i = 0; i < graph.length; i++) {
             if (graph[i].length > 2) {
-                console.log("LENGTH of GRAPH " + graph[i].length);
-                console.log(graph[i][2]);
-                console.log(graph[i][1]);
                 $("#errors").text("Wrong input, check out edges!");
                 $("#errors").css("color", "red");
                 $("#errors").css("font-weight", "bold");
