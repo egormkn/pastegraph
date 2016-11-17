@@ -1,14 +1,40 @@
-//TODO bit.ly; add yandex.metrika stats; redisign
+/*
+ 1. fix doubled edges
+ 2. fix parsing url
+ 3. redisign
+ 4. [10min] add yandex.metrika
+ 5. [10min] add examples
+ 6. [1min] post
+ Сделал c Ваней Pastegraph - сайт, который
+ позволяет визуализировать графы и делиться ими.
+
+ P.S. Да, я знаю о баге, когда граф начинает прыгать
+ или начинает появляться старый граф. Я работаю над
+ этим.
+
+ */
 
 
 $(document).ready(function () {
-
+    $("#refresh").click(function () {
+        clean_errors();
+        buildedGraph = buildGraph();
+        update_link();
+        $('#errors').show();
+        if (buildedGraph !== undefined) {
+            drawingGraph = $("#springydemo").springy({graph: buildedGraph});
+        }
+    });
     /*
      algorithm: at first we try to parse link and then try to build
      graph from textarea
      */
-    if(parse_link() != 1)
+    if (parse_link() == 1) {
+        console.log("HERE");
         $("#refresh").click();
+    } else{
+        $("#refresh").click();
+    }
 
     function clean_errors() {
         $('#errors').hide();
@@ -75,8 +101,9 @@ $(document).ready(function () {
         for (var i = 0; i < edges.length; i++)
             edges[i] = edges[i].replace("-", '');
 
-        if (directed == "true")
+        if (directed == true) {
             $('#directional').prop('checked', true);
+        }
         else
             $('#directional').prop('checked', false);
         isDirectional = $('#directional').is(':checked');
@@ -111,6 +138,7 @@ $(document).ready(function () {
             result.push(edge.source.id + "-" + edge.target.id);
         }
         result.join(',');
+        isDirectional = $("#directional").is(":checked");
         var finalLink = (isDirectional ? "digraph" : "graph") + "{" + result.join(",") + "}" + "&method=" + method;
         history.pushState({query: finalLink}, "graphpage", "?q=" + finalLink)
     }
