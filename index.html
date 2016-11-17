@@ -1,119 +1,103 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Pastegraph is a tool for plotting graph</title>
     <meta charset="utf-8"/>
-    <title>Pastegraph - tool for plotting graph</title>
+    <title>Pastegraph - tool for plotting and sharing graph</title>
 
     <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="likely/likely.js"></script>
     <script src="js/springy.js"></script>
     <script src="js/springyui.js"></script>
 
     <script src="js/graphlogic.js"></script>
     <script src="js/ui.js"></script>
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="css/main.css">
 
 </head>
 
 <body>
+<div class="content">
+        <div class="leftColumn">
+            <div class="header">
+                <div class="control-panel">
+                    <h1>Pastegraph</h1>
+                    <p style="margin-top: -6px;margin-bottom: 10px;">Visualize complex graphs in plain text</p>
+                    <div class="examples">
+                        <p>Try some examples:</p>
+                    </div>
+                    <ul class="links" style="padding-bottom:10px;">
+                        <li class="links__list-item">
+                            <a href="#">Cube</a>
+                        </li>
+                        <li class="links__list-item">
+                            <a href="#">Circle</a>
+                        </li>
+                        <li class="links__list-item">
+                            <a href="#">Ethanol</a>
+                        </li>
+                        <li class="links__list-item">
+                            <a href="#">Russian Railways</a>
+                        </li>
+                    </ul>
+                    <div class="input-row">
+                        <input id="draw-matrix" type="radio" name="draw-method" value="matrix">
+                        <label for="draw-matrix" class="input-helper input-helper--radio">Adjacency matrix</label>
 
-<div class="wrapper">
+                        <input id="draw-edgeList" type="radio" name="draw-method" value="edgeList" checked>
+                        <label for="draw-edgeList" class="input-helper input-helper--radio">Edge list</label>
 
-    <div class="content row-fluid">
-        <header class="row-fluid">
+                        <input id="draw-adjacencyList" type="radio" name="draw-method" value="adjacencyList">
+                        <label for="draw-adjacencyList" class="input-helper input-helper--radio">Adjacency list</label>
 
-            <div class="col-md-12">
-                <img src="img/logo.png" alt="Pastegraph" style="float: left;">
+                        <input style="margin-left: 0px;" id="directional" type="checkbox" value="">
+                        <label style="margin-left: 0px;" for="directional" class="input-helper--checkbox"></label>
+                    </div>
+
+
+                </div>
             </div>
-        </header>
-
-
-        <div class="row-fluid">
-            <div class="col-md-5">
-
-                <form>
-                    <legend>Graph source</legend>
-                    <fieldset align="left">
-                        <div id="button-types" >
-                            <label class="radio-inline"><input  type="radio" name="draw-method" value="matrix"> Adjacency
-                                matrix</label>
-                            <label class="radio-inline"><input class="type-selected" type="radio" name="draw-method" value="edgeList" checked>Edge
-                                list</label>
-                            <label class="radio-inline"><input type="radio" name="draw-method" value="adjacencyList" >Adjacency
-                                list</label>
-                        </div>
-                        <div class="checkbox" style="display: inline-block;margin-left: 0px;margin-top: 10px; margin-bottom: 10px;">
-                            <label style="margin-right: 20px;font-size: 1.3em">
-                                <input id="directional" type="checkbox" value="">
-                                <span class="cr"><i class="cr-icon fa fa-check"></i></span>
-                                Directed
-                            </label>
-                        </div>
-
-                    </fieldset>
-                    <textarea id="graph-source" class="graph-source">
+            <textarea id="graph-source">
 1 2
 2 3
-3 4                </textarea>
-                </form>
-                <button style="margin-top:5%;" id="refresh" type="button" class="btn btn-success btn-lg btn-block">
-                    Draw
-                </button>
-                <div id="errors">
+3 4
+            </textarea>
+            <div class="error">
 
+            </div>
+            <div style="padding-left: 20px;float: left; margin-top:2px;">
+                <div width="40" style="float: left;">
+                    <button id="refresh" type="button" class="btn">
+                        Draw
+                    </button>
+                    <div class="text-under">
+                        CTRL−ENTER
+                    </div>
                 </div>
-
-                <p id="links"> </p>
-                <div id="examples">
-
+                <div style="float: right;">
+                    <div class="btn-text" style="float: left;">
+                        <a id="short-link">
+                            bit.ly/2Fs34
+                        </a>
+                    </div>
+                    <button id="get_link" type="button" class="btn-right" style="float:right;">
+                        GET LINK
+                    </button>
+                    <div class="text-under">
+                        SHARE
+                    </div>
                 </div>
-                <!-- <div class="examples">
-                    <h3>
-                        Examples:
-                    </h3>
-                    <p>
-                        <a href="#">Triangle</a>,
-                        <a href="#">Cube</a>,
-                        <a href="#">Ring</a>,
-                        <a href="#">Stick</a>
-                    </p>
-                </div> -->
             </div>
 
-
-            <div class="col-md-7">
-                <canvas id="springydemo" height="350" width="600px;">
-                </canvas>
-                <br>
-                <button id="get_link" type="button">
-                    Get short link
-                </button>
-
-                <a id="short-link">
-
-                </a>
-            </div>
-
+            <footer>
+                <p>Made by Max Averin in <span id="year"></span></p>
+            </footer>
         </div>
+       <div class="rightColumn">
+            <canvas id="springydemo" width="300" height="600">
 
-    </div>
-
-    <footer class="row-fluid">
-        <div class="col-md-5">
-            <div class="likely">
-                <div class="twitter">Твитнуть</div>
-                <div class="facebook">Поделиться</div>
-                <div class="gplus">Плюсануть</div>
-                <div class="vkontakte">Поделиться</div>
-            </div>
-            <p>&copy; <span id="year"></span> <a href="mailto:amax0703@gmail.com">Averin Maxim</a></p>
+            </canvas>
         </div>
-        <div class="col-md-7"></div>
-    </footer>
 </div>
 </body>
 </html>

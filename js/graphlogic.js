@@ -4,9 +4,6 @@ function getEdgeList(graph) {
         if (graph[i].length > 2) {
             console.log(graph[i][0],graph[i][2]);
             $(".error").text("Wrong input, check out edges!");
-            $(".error").css("color", "red");
-            $(".error").css("font-weight", "bold");
-            $(".error").css("font-size", "1.2em");
             break;
         } else {
             if (!(graph[i][0] in newGraph.nodeSet) && graph[i][0] !== undefined)
@@ -140,7 +137,6 @@ $(document).ready(function () {
         for (var i = 1; i <= graph.length; i++) {
             if (graph[i - 1][0] > graph[i - 1].length - 1 || graph[i - 1][0] < graph[i - 1].length - 1) {
                 $(".error").text("Wrong input, check out number of edges!");
-                $(".error").css("color", "red");
                 return undefined;
             } else {
                 if (!(i in newGraph.nodeSet))

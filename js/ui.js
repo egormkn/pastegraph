@@ -1,16 +1,23 @@
 $(document).ready(function () {
-    $("#refresh").click(function () {
+    function drawGraph(){
         clean_errors();
         buildedGraph = buildGraph();
-        console.log("NEW GRAPH");
-        console.log(buildedGraph);
         $('.error').show();
         update_link();
         if (buildedGraph !== undefined) {
             drawingGraph = $("#springydemo").springy({graph: buildedGraph});
         }
+    };
+
+    $("#refresh").click(function () {
+        drawGraph();
     });
 
+    $('#graph-source').keydown(function (e) {
+        if (e.ctrlKey && e.keyCode == 13) {
+            drawGraph();
+        }
+    });
     /*
      algorithm: at first we try to parse link and then try to build
      graph from textarea
