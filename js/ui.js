@@ -1,22 +1,3 @@
-/*
- 1. [DONE] fix parsing url
- 2. [DONE] fix doubled edges + erros
- 3. fix sniffle
- 3.1 redisign
- http://stackoverflow.com/questions/19666790/html5-canvas-100-height-and-width
- 4. [10min] add yandex.metrika
- 5. [10min] add examples
- 6. [1min] post
- Сделал c Ваней Pastegraph - сайт, который
- позволяет визуализировать графы и делиться ими.
-
- P.S. Да, я знаю о баге, когда граф начинает прыгать
- или начинает появляться старый граф. Я работаю над
- этим.
-
- */
-
-
 $(document).ready(function () {
     $("#refresh").click(function () {
         clean_errors();

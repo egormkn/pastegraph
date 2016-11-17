@@ -29,10 +29,6 @@ p {
 
 }
 
-.col-md-8 {
-    border-right: 1px solid grey;
-}
-
 h1 {
     font-size: 2.5em;
     font-weight: bold;
@@ -72,7 +68,7 @@ h1 {
 .links__list-item + .links__list-item::before {
     position: relative;
     content: "•";
-    margin: 0 12px;
+    margin: 0 8px;
 }
 
 .examples p {
@@ -93,9 +89,10 @@ textarea {
     outline: none;
     border: none;
     margin: 0px;
+    cursor: text
 }
 
-#error{
+#error {
     margin: 0px;
     margin-bottom: 10px;
     background-color: #FEEEEE;
@@ -123,6 +120,7 @@ footer p {
     margin-left: -6px;
     margin-bottom: 5px;
     font-size: 1em;
+    cursor: pointer;
     padding: 10px;
 }
 
@@ -130,6 +128,7 @@ footer p {
     content: '';
     display: block;
     position: absolute;
+
 }
 
 .input-helper--radio {
@@ -150,7 +149,6 @@ footer p {
     border: 1px solid #24F;
 }
 
-
 input[type="radio"] {
     display: none;
     border: 1px solid black;
@@ -168,15 +166,16 @@ input[type="radio"]:checked + label {
 .btn {
     -webkit-border-radius: 0px 5px 5px 0px;
     -moz-border-radius: 0px 5px 5px 0px;
-    border-radius: 0px 5px 5px 0px;
+    border-radius: 5px 5px 5px 5px;
     font-family: Arial;
     font-weight: bold;
     color: #24F;
     line-height: 1.5em;
-    font-size: 16px;
+    font-size: 1em;
     background: #EFEFEF;
     padding: 4px 40px 4px 40px;
     text-decoration: none;
+    cursor: pointer
 }
 
 .btn:hover {
@@ -195,7 +194,8 @@ input[type="radio"]:checked + label {
     color: black;
     pointer-events: none;
     line-height: 1.5em;
-    font-size: 18px;
+    font-size: 1em;
+    margin-left: 20px;
     background: #EFEFEF;
     padding: 4px 40px 4px 40px;
     text-decoration: none;
@@ -203,30 +203,53 @@ input[type="radio"]:checked + label {
 }
 
 
+
+
+.btn-right {
+    -webkit-border-radius: 0px 5px 5px 0px;
+    -moz-border-radius: 0px 5px 5px 0px;
+    border-radius: 0px 5px 5px 0px;
+    font-family: Arial;
+    font-weight: bold;
+    color: #24F;
+    line-height: 1.5em;
+    font-size: 1em;
+    background: #EFEFEF;
+    padding: 4px 40px 4px 40px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-right:hover {
+    background: #24F;
+    color: white;
+    text-decoration: none;
+    outline: none;
+}
+
 /*
 Checkboxes
 */
 
-
 .input-helper--checkbox {
     position: relative;
     display: inline-block;
-
+    cursor: pointer;
 }
-
-
 
 .input-helper--checkbox:before {
     left: 0;
     margin-left: 30px;
-    margin-top: -20px;
+    margin-top: -10px;
     width: 20px;
     height: 20px;
     content: '';
-    background: url(img/arrow.svg) no-repeat;
-    background-size: 100%;
+    background: url(img/arrow.svg) center center no-repeat;
+    background-size: 70%;
     display: block;
     position: absolute;
+    border-radius: 3px;
     border: 1px solid #24F;
 }
 
