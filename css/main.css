@@ -227,7 +227,6 @@ input[type="radio"]:checked + label {
     font-family: Arial;
     font-weight: bold;
     color: black;
-    pointer-events: none;
     line-height: 1.5em;
     font-size: 1em;
     margin-left: 20px;
@@ -235,6 +234,7 @@ input[type="radio"]:checked + label {
     padding: 4px 20px 4px 20px;
     text-decoration: none;
     border: none;
+    cursor:pointer;
 }
 
 .btn-right {
