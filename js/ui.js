@@ -1,7 +1,8 @@
 /*
- 1. [DONE] fix doubled edges
- 2. [DONE] fix parsing url
- 3. redisign
+ 1. [DONE] fix parsing url
+ 2. [DONE] fix doubled edges + erros
+ 3. fix sniffle
+ 3.1 redisign
  4. [10min] add yandex.metrika
  5. [10min] add examples
  6. [1min] post
@@ -19,22 +20,19 @@ $(document).ready(function () {
     $("#refresh").click(function () {
         clean_errors();
         buildedGraph = buildGraph();
-        update_link();
         $('#errors').show();
+        update_link();
         if (buildedGraph !== undefined) {
             drawingGraph = $("#springydemo").springy({graph: buildedGraph});
         }
     });
+
     /*
      algorithm: at first we try to parse link and then try to build
      graph from textarea
      */
-    if (parse_link() == 1) {
-        console.log("HERE");
-        $("#refresh").click();
-    } else{
-        $("#refresh").click();
-    }
+    parse_link();
+    $("#refresh").click();
 
     function clean_errors() {
         $('#errors').hide();
@@ -57,6 +55,7 @@ $(document).ready(function () {
     });
 
     $("input[type='checkbox']").change(function () {
+        console.log("DOUBLED VERTEX!");
         update_link();
         $("#refresh").click();
     });
@@ -70,9 +69,6 @@ $(document).ready(function () {
             drawingGraph = $("#springydemo").springy({graph: buildedGraph});
         }
     });
-
-    // draw graph immediately when page is opened
-
 
     function parse_link() {
         var currentLink = window.location.href;
@@ -145,7 +141,7 @@ $(document).ready(function () {
 
     $('#get_link').click(function () {
         var xhr = new XMLHttpRequest();
-        var requestURL = "https://api-ssl.bitly.com/v3/shorten?access_token=e39789de6e564128360fef76d31b84f82b0865f9&longUrl="
+        var requestURL = "https://api-ssl.bitly.com/v3/shorten?access_token=e39789de6e564128360fef76d31b84f82b0865f9&longUrl=";
         var currentURL = encodeURIComponent(window.location.href) + "&format=txt";
         console.log(requestURL + currentURL);
         xhr.open("GET", requestURL + currentURL, true);
