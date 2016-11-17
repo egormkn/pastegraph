@@ -146,7 +146,7 @@ $(document).ready(function () {
     $('#get_link').click(function () {
         var xhr = new XMLHttpRequest();
         var requestURL = "https://api-ssl.bitly.com/v3/shorten?access_token=e39789de6e564128360fef76d31b84f82b0865f9&longUrl="
-        var currentURL = encodeURIComponent(window.location.href + "&format=txt");
+        var currentURL = encodeURIComponent(window.location.href) + "&format=txt";
         xhr.open("GET", requestURL + currentURL, true);
         xhr.send();
         xhr.onreadystatechange = processRequest;
