@@ -8,7 +8,7 @@ html,
 body {
     height: 100%;
     width: 100%;
-    font-size: 14px;
+    font-size: 15px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -16,35 +16,53 @@ p {
     font-size: 1em;
 }
 
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.leftColumn {
+    float: left;
+    min-width: 500px;
+    width: 20%;
+    height: 100vh;
+    height: 100vh;
+    min-height: 100vh;
+    overflow: hidden;
+    border-right: 1px solid #ccc;
+}
+
+.rightColumn {
+    float: left;
+    min-width: 500px;
+    width: 80%;
+}
+
 .control-panel a {
     font-size: 1em;
     color: #24F;
 }
 
-.col-md-4 {
-    border-right: 1px solid #ccc;
-    height: 100vh;
-    text-align: left;
-    padding: 0px;
-    min-width: 500px;
-}
-
 h1 {
     font-size: 2.5em;
     font-weight: bold;
+    padding: 0px;
+    margin: 0px;
 }
 
-#springydemo {
-
+canvas {
+    border: 1px solid black;
 }
 
 .header {
     background-color: #FCFCFC;
     min-height: 150px;
     padding: 0px;
-    margin-bottom: 0px;
+    margin: 0px;
     box-shadow: 0px 10px 5px 0px rgba(0, 0, 0, .2);
-    z-index: 2;
     border-bottom: 1px solid #ccc;
 }
 
@@ -92,10 +110,14 @@ textarea {
     cursor: text
 }
 
-#error {
+.error {
     margin: 0px;
+    padding: 10px;
     margin-bottom: 10px;
     background-color: #FEEEEE;
+    padding-left: 20px;
+    font-weight: bold;
+    font-size: 1em;
 }
 
 textarea:focus {
@@ -107,12 +129,27 @@ textarea:focus {
 
 footer p {
     font-size: 1em;
-    font-color: red;
+    padding-left: 20px;
+    padding-top: 10px;
+    clear: left;
+    color: grey;
+}
+
+.text-under {
+    text-align: center;
+    letter-spacing: .25em;
+    font-size: 0.8em;
+    color: #8c8c8c;
+    font-weight: 500;
 }
 
 /*
     CSS3 checkboxes
  */
+
+.input-row {
+    margin-left: 4px;
+}
 
 .input-helper {
     position: relative;
@@ -175,7 +212,8 @@ input[type="radio"]:checked + label {
     background: #EFEFEF;
     padding: 4px 40px 4px 40px;
     text-decoration: none;
-    cursor: pointer
+    cursor: pointer;
+    border: none;
 }
 
 .btn:hover {
@@ -201,9 +239,6 @@ input[type="radio"]:checked + label {
     text-decoration: none;
     border: none;
 }
-
-
-
 
 .btn-right {
     -webkit-border-radius: 0px 5px 5px 0px;
@@ -251,6 +286,7 @@ Checkboxes
     position: absolute;
     border-radius: 3px;
     border: 1px solid #24F;
+    fill: white;
 }
 
 input[type="checkbox"] {
@@ -258,5 +294,5 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:checked + label:before {
-    background: #24F;
+    fill: #24F;
 }

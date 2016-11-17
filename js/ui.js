@@ -2,7 +2,9 @@ $(document).ready(function () {
     $("#refresh").click(function () {
         clean_errors();
         buildedGraph = buildGraph();
-        $('#errors').show();
+        console.log("NEW GRAPH");
+        console.log(buildedGraph);
+        $('.error').show();
         update_link();
         if (buildedGraph !== undefined) {
             drawingGraph = $("#springydemo").springy({graph: buildedGraph});
@@ -17,8 +19,8 @@ $(document).ready(function () {
     $("#refresh").click();
 
     function clean_errors() {
-        $('#errors').hide();
-        $('#errors').text('');
+        $('.error').hide();
+        $('.error').text('');
     }
 
     $("input[type='radio']").change(function () {
@@ -37,19 +39,8 @@ $(document).ready(function () {
     });
 
     $("input[type='checkbox']").change(function () {
-        console.log("DOUBLED VERTEX!");
         update_link();
         $("#refresh").click();
-    });
-
-    $("#refresh").click(function () {
-        clean_errors();
-        buildedGraph = buildGraph();
-        update_link();
-        $('#errors').show();
-        if (buildedGraph !== undefined) {
-            drawingGraph = $("#springydemo").springy({graph: buildedGraph});
-        }
     });
 
     function parse_link() {

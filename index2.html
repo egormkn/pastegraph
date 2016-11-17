@@ -1,57 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Pastegraph is a tool for plotting graph</title>
     <meta charset="utf-8"/>
-    <title>Pastegraph - tool for plotting graph</title>
+    <title>Pastegraph - tool for plotting and sharing graph</title>
 
     <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
     <script src="js/springy.js"></script>
     <script src="js/springyui.js"></script>
 
     <script src="js/graphlogic.js"></script>
     <script src="js/ui.js"></script>
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="main_index.css">
 
-
-    <script>
-
-            var newGraph = new Springy.Graph();
-
-
-        var v1 = newGraph.newNode({label: '1'});
-        var v2 = newGraph.newNode({label: '2'});
-        var v3 = newGraph.newNode({label: '3'});
-        var v4 = newGraph.newNode({label: '4'});
-
-        newGraph.newEdge(v1, v2);
-        newGraph.newEdge(v1, v3);
-        newGraph.newEdge(v2, v3);
-        newGraph.newEdge(v3, v4);
-
-        if (newGraph !== undefined)
-            var drawingGraph = $("#springydemo").springy({graph: newGraph});
-
-    </script>
 </head>
 
 <body>
-
-<div class="wrapper">
-
-    <div class="content row-fluid">
-        <div class="col-md-4">
+<div class="content">
+        <div class="leftColumn">
             <div class="header">
                 <div class="control-panel">
                     <h1>Pastegraph</h1>
-                    <p style="margin-top: -6px;">Visualize complex graphs in plain text</p>
+                    <p style="margin-top: -6px;margin-bottom: 10px;">Visualize complex graphs in plain text</p>
                     <div class="examples">
                         <p>Try some examples:</p>
                     </div>
-                    <ul class="links">
+                    <ul class="links" style="padding-bottom:10px;">
                         <li class="links__list-item">
                             <a href="#">Cube</a>
                         </li>
@@ -66,63 +41,61 @@
                         </li>
                     </ul>
                     <div class="input-row">
-                        <input id="radio-input-1" type="radio" value="myValue 1" name="radio-group" checked>
+                        <input id="radio-input-1" type="radio" name="draw-method" value="matrix">
                         <label for="radio-input-1" class="input-helper input-helper--radio">Adjacency matrix</label>
 
-                        <input id="radio-input-2" type="radio" value="myValue 2" name="radio-group">
+                        <input id="radio-input-2" type="radio" name="draw-method" value="edgeList" checked>
                         <label for="radio-input-2" class="input-helper input-helper--radio">Edge list</label>
-                        <input id="radio-input-3" type="radio" value="myValue 3" name="radio-group">
+
+                        <input id="radio-input-3" type="radio" name="draw-method" value="adjacencyList">
                         <label for="radio-input-3" class="input-helper input-helper--radio">Adjacency list</label>
 
-                        <input style="margin-left: 0px;" id="directional" type="checkbox">
+                        <input style="margin-left: 0px;" id="directional" type="checkbox" value="">
                         <label style="margin-left: 0px;" for="directional" class="input-helper--checkbox"></label>
                     </div>
 
 
-
                 </div>
             </div>
-            <textarea>
+            <textarea id="graph-source">
 1 2
 2 3
 3 4
             </textarea>
-            <div style="padding-left: 20px;font-weight: bold; font-size: 1em;" id="error">
+            <div class="error">
                 Errors
             </div>
             <div style="padding-left: 20px;float: left;">
-                <div width="40" style=" float: left;">
+                <div width="40" style="float: left;">
                     <button id="refresh" type="button" class="btn">
                         Draw
                     </button>
-                    <div style="text-align: center; letter-spacing: .25em;font-size: 0.8em;color:#8c8c8c;font-weight: 500;">
+                    <div class="text-under">
                         CTRL-ENTER
                     </div>
                 </div>
-                <div style="float: right;line-height: 1.5em;">
-                    <div class="btn-text" style="float: left;">
+                <div style="float: right;">
+                    <div class="btn-text" style="float: left;" id="short-link">
                         bit.ly/2fgsW
                     </div>
                     <button id="get_link" type="button" class="btn-right" style="float:right;">
                         COPY
                     </button>
-                    <div style="text-align: center; letter-spacing: .25em;font-size: 0.8em;color:#8c8c8c;font-weight: 500;">
+                    <div class="text-under">
                         SHARE
                     </div>
                 </div>
             </div>
 
-            <footer style="padding-left: 20px; padding-top: 10px;clear: left;color: grey;">
-                <p>Made by Max Averin in 2016</p>
+            <footer class="leftColumn">
+                <p>Made by Max Averin in <span id="year"></span></p>
             </footer>
         </div>
-        <div class="col-md-8">
-            <canvas id="springydemo"></canvas>
+       <div class="rightColumn">
+            <canvas id="springydemo">
+
+            </canvas>
         </div>
-
-    </div>
-
-
 </div>
 </body>
 </html>
