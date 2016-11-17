@@ -3,6 +3,7 @@
  2. [DONE] fix doubled edges + erros
  3. fix sniffle
  3.1 redisign
+ http://stackoverflow.com/questions/19666790/html5-canvas-100-height-and-width
  4. [10min] add yandex.metrika
  5. [10min] add examples
  6. [1min] post

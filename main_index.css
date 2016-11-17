@@ -1,0 +1,233 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+p {
+    font-size: 1.8em;
+}
+
+.control-panel a {
+    font-size: 1.8em;
+    color: #24F;
+}
+
+.col-md-4 {
+    border-right: 1px solid #ccc;
+    height: 100vh;
+    text-align: left;
+    padding: 0px;
+
+}
+
+.col-md-8 {
+    border-right: 1px solid grey;
+}
+
+h1 {
+    font-size: 4em;
+    font-weight: bold;
+}
+
+#springydemo {
+
+}
+
+.header {
+    background-color: #FCFCFC;
+    min-height: 250px;
+    padding: 0px;
+    margin-bottom: 0px;
+    box-shadow: 0px 10px 5px 0px rgba(0, 0, 0, .2);
+    z-index: 2;
+    border-bottom: 1px solid #ccc;
+}
+
+.control-panel {
+    padding-top: 20px;
+    padding-left: 20px;
+    line-height: 1.5;
+}
+
+.links {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+}
+
+.links__list-item {
+    display: flex;
+
+}
+
+.links__list-item + .links__list-item::before {
+    position: relative;
+    content: ".";
+    margin: 0 12px;
+}
+
+.examples p {
+    padding: 0px;
+    margin: 0px;
+}
+
+textarea {
+    resize: none;
+    width: 100%;
+    height: 500px;
+    padding: 4px;
+    margin: 0px;
+    background-color: #FEEEEE;
+    border: 0px;
+    font-size: 1.8em;
+    outline: none;
+    border: none;
+    margin: 0px;
+}
+
+#error{
+    margin: 0px;
+    margin-bottom: 10px;
+    background-color: #FEEEEE;
+}
+
+textarea:focus {
+    border-bottom: 1px solid blue;
+    border-top: 1px solid blue;
+    border-right: 1px solid blue;
+    border-left: none;
+}
+
+footer p {
+    font-size: 1.5em;
+    font-color: red;
+}
+
+/*
+    CSS3 checkboxes
+ */
+
+.input-helper {
+    position: relative;
+    display: inline-block;
+    margin-left: -6px;
+    margin-bottom: 5px;
+    font-size: 1.9em;
+    padding: 10px;
+}
+
+.input-helper::before {
+    content: '';
+    display: block;
+    position: absolute;
+}
+
+.input-helper--radio {
+    padding: 0 4px;
+    border: 1px solid #24F;
+    border-right: none;
+    color: #24F;
+    padding: 0px 10px;
+}
+
+.input-helper:first-of-type {
+    border-radius: 4px 0 0 4px;
+}
+
+.input-helper:last-of-type {
+    border-radius: 0px 4px 4px 0px;
+    border: 1px solid #24F;
+}
+
+
+input[type="radio"] {
+    display: none;
+    border: 1px solid black;
+}
+
+input[type="radio"]:checked + label {
+    background-color: #24F;
+    color: white;
+}
+
+/*
+    Draw Button
+*/
+
+.btn {
+    -webkit-border-radius: 0px 5px 5px 0px;
+    -moz-border-radius: 0px 5px 5px 0px;
+    border-radius: 0px 5px 5px 0px;
+    font-family: Arial;
+    font-weight: bold;
+    color: #24F;
+    line-height: 1.5em;
+    font-size: 16px;
+    background: #EFEFEF;
+    padding: 4px 40px 4px 40px;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: #24F;
+    color: white;
+    text-decoration: none;
+    outline: none;
+}
+
+.btn-text {
+    -webkit-border-radius: 5px 0px 0px 5px;
+    -moz-border-radius: 5px 0px 0px 5px;
+    border-radius: 5px 0px 0px 5px;
+    font-family: Arial;
+    font-weight: bold;
+    color: black;
+    pointer-events: none;
+    line-height: 1.5em;
+    font-size: 18px;
+    background: #EFEFEF;
+    padding: 4px 40px 4px 40px;
+    text-decoration: none;
+    border: none;
+}
+
+
+/*
+Checkboxes
+*/
+
+
+.input-helper--checkbox {
+    position: relative;
+    display: inline-block;
+    background-image: url(img/arrow.svg);
+}
+
+
+
+.input-helper--checkbox:before {
+    left: 0;
+    width: 25px;
+    height: 25px;
+    content: '';
+    display: block;
+    position: absolute;
+    border: 1px solid #24F;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+input[type="checkbox"]:checked + label:before {
+    background: #24F;
+}
