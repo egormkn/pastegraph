@@ -209,16 +209,20 @@ Checkboxes
 .input-helper--checkbox {
     position: relative;
     display: inline-block;
-    background-image: url(img/arrow.svg);
+
 }
 
 
 
 .input-helper--checkbox:before {
     left: 0;
-    width: 25px;
-    height: 25px;
+    margin-left: 30px;
+    margin-top: -20px;
+    width: 40px;
+    height: 40px;
     content: '';
+    background: url(img/arrow.svg) no-repeat;
+    background-size: 100%;
     display: block;
     position: absolute;
     border: 1px solid #24F;
